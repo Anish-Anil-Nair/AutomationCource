@@ -1,66 +1,70 @@
 package testScript;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import pages.LoginPage;
+import utilities.ExcelUtilities;
+
 public class LoginTest extends TestNgBase {
 	@Test
-	public void verifyUserLoginWithValidCredentials()
+	public void verifyUserLoginWithValidCredentials() throws IOException
 	{
+		String username1 = ExcelUtilities.readStringData(0, 0, "LoginPage");
+		String password1 = ExcelUtilities.readStringData(0, 1, "LoginPage");
+		LoginPage loginpage = new LoginPage(driver);
+		loginpage.enterUserNameOnUserNameField(username1);
+		loginpage.enterPasswordOnPasswordField(password1);
+		loginpage.clickOnSignInButton();
 		
-		WebElement username = driver.findElement(By.xpath("//input[@data-test='username']"));
-		username.sendKeys("standard_user");
+		//WebElement username = driver.findElement(By.xpath("//input[@id='user-name']"));
+		//username.sendKeys("standard_user");
 		
-		WebElement password = driver.findElement(By.xpath("//input[@data-test='password']"));
-		password.sendKeys("secret_sauce");
+		//WebElement password = driver.findElement(By.xpath("//input[@id='password']"));
+		//password.sendKeys("secret_sauce");
 		
-		WebElement loginbutton =driver.findElement(By.xpath("//input[@id='login-button']"));
-		loginbutton.click();
+		//WebElement loginbutton =driver.findElement(By.xpath("//input[@id='login-button']"));
+		//loginbutton.click();
 	}
 	
 	
 	@Test
-	public void verifyUserLoginWithValidUserNameAndNonValidPassword()
+	public void verifyUserLoginWithValidUserNameAndNonValidPassword() throws IOException
 	{
-		WebElement username = driver.findElement(By.xpath("//input[@data-test='username']"));
-		username.sendKeys("standard_user");
-		
-		WebElement password = driver.findElement(By.xpath("//input[@data-test='password']"));
-		password.sendKeys("123");
-		
-		WebElement loginbutton =driver.findElement(By.xpath("//input[@id='login-button']"));
-		loginbutton.click();
+		String username1 = ExcelUtilities.readStringData(1, 0, "LoginPage");
+		String password1 = ExcelUtilities.readStringData(1, 1, "LoginPage");
+		LoginPage loginpage = new LoginPage(driver);
+		loginpage.enterUserNameOnUserNameField(username1);
+		loginpage.enterPasswordOnPasswordField(password1);
+		loginpage.clickOnSignInButton();
 		
 	}
 	
 	@Test
-	public void verifyUserLoginWithNonValidUserNameAndValidPassword()
+	public void verifyUserLoginWithNonValidUserNameAndValidPassword() throws IOException
 	{
-		WebElement username = driver.findElement(By.xpath("//input[@data-test='username']"));
-		username.sendKeys("ani");
-		
-		WebElement password = driver.findElement(By.xpath("//input[@data-test='password']"));
-		password.sendKeys("secret_sauce");
-		
-		WebElement loginbutton =driver.findElement(By.xpath("//input[@id='login-button']"));
-		loginbutton.click();
+		String username1 = ExcelUtilities.readStringData(2, 0, "LoginPage");
+		String password1 = ExcelUtilities.readStringData(2, 1, "LoginPage");
+		LoginPage loginpage = new LoginPage(driver);
+		loginpage.enterUserNameOnUserNameField(username1);
+		loginpage.enterPasswordOnPasswordField(password1);
+		loginpage.clickOnSignInButton();
 		
 
 	}
 	
 	@Test
-	public void verifyUserLoginWithNonValidCredentials()
+	public void verifyUserLoginWithNonValidCredentials() throws IOException
 	{
-		
-		WebElement username = driver.findElement(By.xpath("//input[@data-test='username']"));
-		username.sendKeys("ani");
-		
-		WebElement password = driver.findElement(By.xpath("//input[@data-test='password']"));
-		password.sendKeys("123");
-		
-		WebElement loginbutton =driver.findElement(By.xpath("//input[@id='login-button']"));
-		loginbutton.click();
+		String username1 = ExcelUtilities.readStringData(3, 0, "LoginPage");
+		String password1 = ExcelUtilities.readStringData(3, 1, "LoginPage");
+		LoginPage loginpage = new LoginPage(driver);
+		loginpage.enterUserNameOnUserNameField(username1);
+		loginpage.enterPasswordOnPasswordField(password1);
+		loginpage.clickOnSignInButton();
 	}
 	
 
