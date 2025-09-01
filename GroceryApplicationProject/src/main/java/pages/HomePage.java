@@ -22,6 +22,9 @@ public class HomePage {
 	private WebElement adminUserClick;
 	
 	@FindBy(xpath="//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news' and @class='small-box-footer']") private WebElement manageNews;
+	
+	@FindBy(xpath="//b[text()='7rmart supermarket']")
+	private WebElement supermarketName;
 
 	public HomePage clickOnAdminButton() {
 		adminClick.click();
@@ -46,5 +49,9 @@ public class HomePage {
 		
 		
 	}
+	public String loginpageHeading()
+	{
+		return supermarketName.getText();
+	} 
 
 }

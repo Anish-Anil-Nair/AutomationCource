@@ -1,12 +1,18 @@
 package testScript;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
 import java.io.IOException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.util.Assert;
+
 import automationCore.BaseClass;
+import constants.Messages;
 import pages.AdminUserPage;
 import pages.HomePage;
 import pages.Loginpage;
@@ -39,7 +45,9 @@ public class AdminUsersTest extends BaseClass {
 		String newUserType1 = ExcelUtilities.getStringData(0, 2, "NewUser");
 		adminuserpage.enterNewUserName(newUsername1).enterNewPassword(newPassword1).selectTheNewUserType(newUserType1)
 				.clickOnNewUserSaveButton();
-
+		//Assert
+				boolean Actual = adminuserpage.isDisplayedUserSavedAlertMsg();
+				assertEquals(Actual, "Alert!",Messages.UNSUCCESSFULLUSERCREATION);
 	}
 
 	@Test(description = "Verify whether the user is able to search the new user")
@@ -60,6 +68,9 @@ public class AdminUsersTest extends BaseClass {
 
 		adminuserpage.enterSearchUserNameOnUserField(entersearchname1).selectSearchUserType(searchUserType1)
 				.clickOnSearchButtonToSearchUser();
+		
+		boolean searchAdminUserstext=adminuserpage.isDisplayedSearchAdminUsersText();
+		assertTrue(searchAdminUserstext,Messages.UNSUCCESSFULLUSERSEARCH);
 
 	}
 
@@ -76,6 +87,10 @@ public class AdminUsersTest extends BaseClass {
 
 		// AdminUserPage adminuserpage = new AdminUserPage(driver);
 		adminuserpage = homepage.clickOnAdminUserButton().clickOnToResetButton();
+		
+		//Assertion
+		boolean resetAdminUserstext=adminuserpage.isDisplayedResetAdminUsersText();
+		assertEquals(resetAdminUserstext,Messages.RESETUSERERROR);
 
 	}
 

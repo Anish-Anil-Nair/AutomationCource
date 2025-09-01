@@ -1,10 +1,13 @@
 package testScript;
 
 import java.io.IOException;
+import java.security.MessageDigest;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.BaseClass;
+import constants.Messages;
 import pages.HomePage;
 import pages.Loginpage;
 import utilities.ExcelUtilities;
@@ -24,6 +27,11 @@ public class HomeTest extends BaseClass {
 		homepage = loginpage.clinkOnToSigninButton().clickOnAdminButton();
 
 		loginpage = homepage.clickOnLogoutButton();
+		
+		//Assertion
+				String actual=homepage.loginpageHeading();
+				String expected="7rmart supermarkete";
+				Assert.assertEquals(actual, expected,Messages.LOGOUTERROR);
 
 	}
 

@@ -31,6 +31,15 @@ public class ManageNewsPage {
 	private WebElement enterSearchNews;
 	@FindBy(xpath = "//button[@value='sr']")
 	private WebElement clickSearchNews;
+	
+	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
+	private WebElement newsSuccessfullySavedMsg;
+	
+	@FindBy(xpath = "//h4[text()='Manage News']")
+	private WebElement manageNewsText;
+	
+	@FindBy(xpath="//h4[text()='Search Manage News']")
+	private WebElement searchNewsText;
 
 	public ManageNewsPage clickOnNewNewsButton()
 
@@ -67,6 +76,20 @@ public class ManageNewsPage {
 
 		clickSearchNews.click();
 		return new ManageNewsPage(driver);
+	}
+	public Boolean isDisplayedNewsSavedAlertMsg()
+	{
+		return newsSuccessfullySavedMsg.isDisplayed();
+	}
+	
+	public String resetPageHeading()
+	{
+		return manageNewsText.getText();
+	}
+	
+	public String searchPageHeading()
+	{
+		return searchNewsText.getText();
 	}
 
 }
